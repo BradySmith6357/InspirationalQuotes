@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="bigModule">
+<head>
+	<title>Inspirational Quotes</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+</head>
+<body ng-controller="mainTroller">
+	<div class="pagepadding">
+		<header>The Quotes</header>
+		<nav>
+			<ul>
+				<li>Home</li>
+				<li>Randome Quote</li>
+				<li>Send Feedback</li>
+			</ul>
+		</nav>
+	<div class="separator">
+	</div>
+	<div style="height:500px;width:645px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+		<div class="quotebox">
+			<div ng-repeat="newQuote in factoryObject">
+				<img ng-src="{{newQuote.img}}" width="75" height="100">
+				<p>{{newQuote.text}}</p>
+				<time></time>
+				<p>{{newQuote.name}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="submitbox">
+	<h4>Got a quote? Submit it below!</h4>
+		<form id="mainForm">
+			<p>Quote:</p>
+			<textarea placeholder="Type Quote Here" ng-model="newQuote.text"></textarea>
+			<p>Author:</p>
+			<textarea placeholder="Author's Full Name" ng-model="newQuote.name"></textarea>
+			<button class="submitbutton"type="submit" form="mainForm" value="submit" ng-click="addQuote()">SUBMIT</button>
+		</form>
+	</div>
+	<div class="sortbox">
+	<h4>Sort Quotes</h4>
+		<form>
+			<input type="checkbox" name="sort" value="Rating High-Low">Rating High-Low</input>
+			<input type="checkbox" name="sort" value="Rating Low-High">Rating Low-High</input>
+			<input type="checkbox" name="sort" value="Rating Author A-Z">Author A-Z</input>
+			<input type="checkbox" name="sort" value="Rating Author Z-A">Author Z-A</input>
+			<input type="checkbox" name="sort" value="Rating Most Recent">Most Recent</input>
+		</form>
+	</div>
+	<footer>
+		<nav>
+			<ul>
+				<li>Home</li>
+				<li>Randome Quote</li>
+				<li>Send Feedback</li>
+			</ul>
+		</nav>
+	</footer>
+</div>
+</body>
