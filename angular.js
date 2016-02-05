@@ -28,6 +28,8 @@ angular.module("bigModule")
 
 	$scope.factoryObject = quoteFactory.list;
 
+	
+
 	$scope.addQuote = function(){
 		$scope.factoryObject.push($scope.newQuote)
 		$scope.newQuote = {}

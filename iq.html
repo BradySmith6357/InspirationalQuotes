@@ -23,11 +23,18 @@
 	</div>
 	<div style="height:500px;width:645px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
 		<div class="quotebox">
-			<div ng-repeat="newQuote in factoryObject">
+			<div class="quotebox" ng-class="{'background1' : $even, 'background2' : $odd }"ng-repeat="newQuote in factoryObject">
 				<img ng-src="{{newQuote.img}}" width="75" height="100">
-				<p>{{newQuote.text}}</p>
+				<p class="quotetext">{{newQuote.text}}</p>
+				<p class="quoteauthor">{{newQuote.name}}</p>
 				<time></time>
-				<p>{{newQuote.name}}</p>
+				<fieldset class="rating">
+    				<input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">&#9734</label>
+    				<input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">&#9734</label>
+    				<input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">&#9734</label>
+    				<input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">&#9734</label>
+    				<input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">&#9734</label>
+				</fieldset>		
 			</div>
 		</div>
 	</div>
