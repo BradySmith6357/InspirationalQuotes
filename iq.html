@@ -3,6 +3,7 @@
 <head>
 	<title>Inspirational Quotes</title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
 	<script type="text/javascript" src="angular.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
 	<script type="text/javascript" src="main.js"></script>
@@ -12,10 +13,10 @@
 <body ng-controller="mainTroller">
 	<div class="pagepadding">
 		<header>The Quotes</header>
-		<nav>
+		<nav class="headernav">
 			<ul>
 				<li>Home</li>
-				<li>Randome Quote</li>
+				<li><a href="" ng-click="random()">Random Quote</a></li>
 				<li>Send Feedback</li>
 			</ul>
 		</nav>
@@ -24,17 +25,17 @@
 	<div style="height:500px;width:645px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
 		<div class="quotebox">
 			<div class="quotebox" ng-class="{'background1' : $even, 'background2' : $odd }"ng-repeat="newQuote in factoryObject">
-				<img ng-src="{{newQuote.img}}" width="75" height="100">
-				<p class="quotetext">{{newQuote.text}}</p>
-				<p class="quoteauthor">{{newQuote.name}}</p>
-				<time></time>
-				<fieldset class="rating">
+					<img ng-src="{{newQuote.img}}" width="75" height="100">
+					<p class="quotetext">{{newQuote.text}}</p>
+					<p class="quoteauthor" ng-click="allAuthor()">{{newQuote.name}}</p>
+					<time></time>
+					<fieldset class="rating">
     				<input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">&#9734</label>
     				<input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">&#9734</label>
     				<input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">&#9734</label>
     				<input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">&#9734</label>
     				<input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">&#9734</label>
-				</fieldset>		
+					</fieldset>	
 			</div>
 		</div>
 	</div>
@@ -62,10 +63,23 @@
 		<nav>
 			<ul>
 				<li>Home</li>
-				<li>Randome Quote</li>
+				<li>Random Quote</li>
 				<li>Send Feedback</li>
 			</ul>
 		</nav>
 	</footer>
+	<div ng-hide="hideBox">
+	<div class="shadowbox" ng-show="showShadowBox">
+		<img ng-src="{{randomQuote.img}}" width="75" height="100">
+		<p class="quotetext">{{randomQuote.text}}</p>
+		<p class="quoteauthor">{{randomQuote.name}}</p>
+		<button class="hidebutton" ng-click="closeBox()">Close</button>
+	</div>
+	</div>
+	<div class="authorbox" ng-repeat="newQuote in factoryObject">
+		<img ng-src="{{newQuote.img}}" width="75" height="100">
+		<p class="quotetext">{{newQuote.text}}</p>
+		<p class="quoteauthor">{{newQuote.name}}</p>
+	</div>
 </div>
 </body>
